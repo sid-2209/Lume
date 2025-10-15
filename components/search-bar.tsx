@@ -16,18 +16,18 @@ export function SearchBar() {
 
   return (
     <div className="w-full max-w-3xl">
-      <h1 className="mb-6 text-3xl font-semibold text-foreground md:text-4xl">
+      <h1 className="mb-6 text-3xl font-medium text-foreground md:text-4xl">
         How can we help?
       </h1>
       <form onSubmit={handleSubmit}>
-        <div className="flex h-16 items-center gap-4 rounded-full border-2 border-border bg-muted px-6 transition-colors hover:border-foreground/20 focus-within:border-foreground/40">
+        <div className="flex h-16 items-center gap-4 rounded-full border border-border bg-muted px-6 transition-colors hover:border-foreground/20 focus-within:border-foreground/60">
           <Search className="h-5 w-5 flex-shrink-0 text-muted-foreground" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Ask us anything..."
-            className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+            className="flex-1 bg-transparent text-base text-foreground placeholder:text-muted-foreground focus:outline-none md:text-lg"
             aria-label="Search"
           />
           <button
