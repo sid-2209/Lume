@@ -15,7 +15,7 @@ export function SearchBar() {
   };
 
   return (
-    <div className="w-full max-w-3xl">
+    <div className="w-full max-w-2xl">
       <h1 className="mb-6 text-3xl font-medium text-foreground md:text-4xl">
         How can we help?
       </h1>
