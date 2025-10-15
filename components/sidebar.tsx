@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSidebar } from "@/contexts/sidebar-context";
 
 const services = [
   {
@@ -29,14 +30,34 @@ const foundry = [
 ];
 
 export function Sidebar() {
+  const { isOpen, close } = useSidebar();
+
   return (
-    <aside className="fixed right-0 top-16 flex h-[calc(100vh-4rem)] items-center border-l border-border">
-      <nav className="px-8">
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          onClick={close}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed right-0 top-16 z-50 flex h-[calc(100vh-4rem)] items-center border-l border-border bg-background transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+          isOpen ? "translate-x-0" : "translate-x-full lg:translate-x-0"
+        }`}
+      >
+        <nav className="px-8">
         <div className="space-y-12">
+          {/* Services */}
           <div className="space-y-8">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Services
-            </h2>
+            <Link href="/services">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary cursor-pointer">
+                Services
+              </h2>
+            </Link>
             <ul className="ml-4 space-y-6">
               {services.map((service) => (
                 <li key={service.name} className="group relative">
@@ -56,10 +77,13 @@ export function Sidebar() {
             </ul>
           </div>
 
+          {/* Foundry */}
           <div className="space-y-8">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Foundry
-            </h2>
+            <Link href="/foundry">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary cursor-pointer">
+                Foundry
+              </h2>
+            </Link>
             <ul className="ml-4 space-y-6">
               {foundry.map((item) => (
                 <li key={item.name} className="group relative">
@@ -78,8 +102,27 @@ export function Sidebar() {
               ))}
             </ul>
           </div>
+
+          {/* Inside Lume */}
+          <div className="space-y-8">
+            <Link href="/inside-lume">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary cursor-pointer">
+                Inside Lume
+              </h2>
+            </Link>
+          </div>
+
+          {/* Let's Talk */}
+          <div className="space-y-8">
+            <Link href="/lets-talk">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary cursor-pointer">
+                Let&apos;s Talk
+              </h2>
+            </Link>
+          </div>
         </div>
       </nav>
     </aside>
+    </>
   );
 }
