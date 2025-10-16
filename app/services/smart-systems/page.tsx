@@ -201,7 +201,7 @@ export default function SmartSystemsPage() {
               /* Selected Card View with Two Panels */
               <div className="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:items-start">
                 {/* Left Panel - Selected Card (maintains grid width) */}
-                <div className="w-full max-w-2xl flex-shrink-0 lg:sticky lg:top-32 lg:pt-8">
+                <div className="w-full max-w-2xl flex-shrink-0 lg:sticky lg:top-32">
                   <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
                     You're in your element.
                   </h2>
@@ -247,7 +247,7 @@ export default function SmartSystemsPage() {
                 </div>
 
                 {/* Right Panel - Profession Options with Border */}
-                <div className="flex-1 border-t pt-8 lg:border-l lg:border-t-0 lg:pl-16 lg:pt-8">
+                <div className="flex-1 border-t pt-8 lg:border-l lg:border-t-0 lg:pl-16 lg:pt-0">
                   {!selectedProfession ? (
                     <>
                       <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
