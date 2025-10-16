@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Sidebar } from "@/components/sidebar";
 import { AudienceToggle } from "@/components/audience-toggle";
 import { useAudience } from "@/contexts/audience-context";
@@ -185,11 +186,105 @@ export default function SmartSystemsPage() {
                       className="group relative overflow-hidden rounded-lg border border-border bg-background transition-colors hover:border-foreground/20 hover:cursor-pointer"
                       style={{ aspectRatio: '4/5' }}
                     >
-                      <div className="flex h-full flex-col justify-between p-6 text-left">
-                        <h3 className="text-lg font-medium text-foreground">
+                      {/* Background Images */}
+                      {card.id === 1 && (
+                        <Image
+                          src="/assets/images/individuals/1_Educators_and_Mentors.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 2 && (
+                        <Image
+                          src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 3 && (
+                        <Image
+                          src="/assets/images/individuals/3_Independent_Creators.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 4 && (
+                        <Image
+                          src="/assets/images/individuals/4_Technical_Professionals.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 5 && (
+                        <Image
+                          src="/assets/images/individuals/5_Consultants_and_Freelancers.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 6 && (
+                        <Image
+                          src="/assets/images/individuals/6_Students_and_Learners.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 7 && (
+                        <Image
+                          src="/assets/images/individuals/7_Skilled_Professionals.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 8 && (
+                        <Image
+                          src="/assets/images/individuals/8_Writers_and_Thinkers.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 9 && (
+                        <Image
+                          src="/assets/images/individuals/9_Performers_and_Public_Figures.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {card.id === 10 && (
+                        <Image
+                          src="/assets/images/individuals/10_Everyday_Professionals.jpg"
+                          alt={card.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                        />
+                      )}
+                      {/* Dark overlay for better text readability */}
+                      {card.id <= 10 && <div className="absolute inset-0 bg-black/40" />}
+                      {/* Content */}
+                      <div className={`flex h-full flex-col justify-between p-6 text-left ${card.id <= 10 ? 'relative z-10' : ''}`}>
+                        <h3 className={`text-lg font-medium ${card.id <= 10 ? 'text-white' : 'text-foreground'}`}>
                           {card.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className={`text-sm ${card.id <= 10 ? 'text-white/90' : 'text-muted-foreground'}`}>
                           {card.description}
                         </p>
                       </div>
@@ -206,14 +301,118 @@ export default function SmartSystemsPage() {
                     You're in your element.
                   </h2>
                   <div
-                    className="overflow-hidden rounded-lg border border-border bg-background sm:w-[calc((100%-1.5rem)/2)] animate-in slide-in-from-bottom-4 duration-300"
+                    className="relative overflow-hidden rounded-lg border border-border bg-background sm:w-[calc((100%-1.5rem)/2)] animate-in slide-in-from-bottom-4 duration-300"
                     style={{ aspectRatio: '4/5' }}
                   >
-                    <div className="flex h-full flex-col justify-between p-6">
-                      <h3 className="text-lg font-medium text-foreground">
+                    {/* Background Images for Selected Card */}
+                    {selectedCard.id === 1 && (
+                      <Image
+                        src="/assets/images/individuals/1_Educators_and_Mentors.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 2 && (
+                      <Image
+                        src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 3 && (
+                      <Image
+                        src="/assets/images/individuals/3_Independent_Creators.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 4 && (
+                      <Image
+                        src="/assets/images/individuals/4_Technical_Professionals.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 5 && (
+                      <Image
+                        src="/assets/images/individuals/5_Consultants_and_Freelancers.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 6 && (
+                      <Image
+                        src="/assets/images/individuals/6_Students_and_Learners.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 7 && (
+                      <Image
+                        src="/assets/images/individuals/7_Skilled_Professionals.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 8 && (
+                      <Image
+                        src="/assets/images/individuals/8_Writers_and_Thinkers.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 9 && (
+                      <Image
+                        src="/assets/images/individuals/9_Performers_and_Public_Figures.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {selectedCard.id === 10 && (
+                      <Image
+                        src="/assets/images/individuals/10_Everyday_Professionals.jpg"
+                        alt={selectedCard.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        priority
+                      />
+                    )}
+                    {/* Dark overlay for better text readability */}
+                    {selectedCard.id <= 10 && <div className="absolute inset-0 bg-black/40" />}
+                    {/* Content */}
+                    <div className={`flex h-full flex-col justify-between p-6 ${selectedCard.id <= 10 ? 'relative z-10' : ''}`}>
+                      <h3 className={`text-lg font-medium ${selectedCard.id <= 10 ? 'text-white' : 'text-foreground'}`}>
                         {selectedCard.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className={`text-sm ${selectedCard.id <= 10 ? 'text-white/90' : 'text-muted-foreground'}`}>
                         {selectedCard.description}
                       </p>
                     </div>
