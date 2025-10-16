@@ -25,7 +25,7 @@ export default function SignInPage() {
         <div className="w-full max-w-md space-y-8">
           <div>
             <h1 className="text-3xl font-medium text-foreground">
-              Sign in to your account
+              Sign in to keep building.
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
               Welcome back! Please enter your details.

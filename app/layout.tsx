@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/header";
 import { SidebarProvider } from "@/contexts/sidebar-context";
+import { AudienceProvider } from "@/contexts/audience-context";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -41,10 +42,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-            </div>
+            <AudienceProvider>
+              <div className="relative flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+              </div>
+            </AudienceProvider>
           </SidebarProvider>
         </ThemeProvider>
       </body>

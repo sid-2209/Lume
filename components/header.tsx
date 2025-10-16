@@ -20,7 +20,7 @@ export function Header() {
             href="/sign-in"
             className="text-foreground transition-colors hover:text-primary"
           >
-            Sign in
+            Dashboard
           </Link>
           {/* Mobile Menu Toggle - Only visible on mobile */}
           <button
