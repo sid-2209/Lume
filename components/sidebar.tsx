@@ -24,7 +24,7 @@ const services = [
 
 const foundry = [
   {
-    name: "Book a session",
+    name: "Schedule a Consultation",
     href: "/foundry/book-session",
     description: "Let us help you build what's next",
   },

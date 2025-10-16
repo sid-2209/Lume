@@ -221,6 +221,29 @@ export default function SmartSystemsPage() {
                   <p className="mt-6 text-sm text-muted-foreground md:text-base">
                     {selectedCard.essence}
                   </p>
+
+                  {/* CTA Cards - Always visible when category selected */}
+                  <div className="mt-8 space-y-4">
+                    {/* Card 1: Discover How Smart Systems Work */}
+                    <button className="w-full rounded-lg border border-border bg-background p-6 text-left transition-colors hover:border-foreground/20">
+                      <h3 className="text-xl font-medium text-foreground md:text-2xl">
+                        Discover How Smart Systems Work for You
+                      </h3>
+                      <p className="mt-2 text-base text-muted-foreground md:text-lg">
+                        A clear, practical guide to help you plan with confidence.
+                      </p>
+                    </button>
+
+                    {/* Card 2: Schedule a Consultation */}
+                    <button className="w-full rounded-lg border border-border bg-background p-6 text-left transition-colors hover:border-foreground/20">
+                      <h3 className="text-xl font-medium text-foreground md:text-2xl">
+                        Schedule a Consultation
+                      </h3>
+                      <p className="mt-2 text-base text-muted-foreground md:text-lg">
+                        Don't see what you're looking for? Let's talk through your ideas and design something that fits perfectly.
+                      </p>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Right Panel - Profession Options with Border */}
