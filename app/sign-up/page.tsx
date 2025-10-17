@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Github } from "lucide-react";
 
-export default function SignUpPage() {
+function SignUpContent() {
+  const searchParams = useSearchParams();
+  const source = searchParams.get('source');
+  const isFromSaveDraft = source === 'save-draft';
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,10 +36,13 @@ export default function SignUpPage() {
         <div className="w-full max-w-md space-y-8">
           <div>
             <h1 className="text-3xl font-medium text-foreground">
-              Create your account
+              {isFromSaveDraft ? "Save Your Work, Continue Anytime" : "Create your account"}
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Fill in the form below to create your account
+              {isFromSaveDraft
+                ? "Sign up to view and manage your saved drafts whenever you like."
+                : "Fill in the form below to create your account"
+              }
             </p>
           </div>
 
@@ -190,5 +198,13 @@ export default function SignUpPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={<div className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center">Loading...</div>}>
+      <SignUpContent />
+    </Suspense>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Sidebar } from "@/components/sidebar";
 import { AudienceToggle } from "@/components/audience-toggle";
 import { useAudience } from "@/contexts/audience-context";
@@ -276,6 +277,7 @@ const cardsData: CardData[] = [
 ];
 
 export default function SmartSystemsPage() {
+  const router = useRouter();
   const { audienceType } = useAudience();
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
   const [selectedProfession, setSelectedProfession] = useState<string | null>(null);
@@ -345,6 +347,10 @@ export default function SmartSystemsPage() {
 
   const handleAddOnsContinue = () => {
     setAddOnsConfirmed(true);
+  };
+
+  const handleSaveDraft = () => {
+    router.push('/sign-up?source=save-draft');
   };
 
   // Get available add-ons based on selected toolkits
@@ -815,7 +821,10 @@ export default function SmartSystemsPage() {
                                 </div>
                                 {/* Action Buttons */}
                                 <div className="mt-6 flex gap-4">
-                                  <button className="rounded-lg border border-border bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2">
+                                  <button
+                                    onClick={handleSaveDraft}
+                                    className="rounded-lg border border-border bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
+                                  >
                                     Save Draft
                                   </button>
                                   <button className="rounded-lg bg-foreground px-6 py-3 text-base font-medium text-background transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2">
