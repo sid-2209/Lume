@@ -475,12 +475,14 @@ export default function SmartSystemsPage() {
                       <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
                         This is your craft.
                       </h2>
-                      <div className="animate-in slide-in-from-right-4 duration-300">
-                        <div className="w-fit rounded-lg border border-border bg-background px-6 py-4">
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 animate-in slide-in-from-right-4 duration-300">
+                        <div className="rounded-lg border border-border bg-background px-6 py-4">
                           <span className="text-lg font-medium text-foreground">
                             {selectedProfession}
                           </span>
                         </div>
+                      </div>
+                      <div className="animate-in slide-in-from-right-4 duration-300">
                         <h3 className="mt-8 mb-6 text-xl font-medium text-foreground md:text-2xl">
                           {toolkitConfirmed ? "This is your Toolkit." : "Toolkit. Which is best for you?"}{" "}
                           {!toolkitConfirmed && (
