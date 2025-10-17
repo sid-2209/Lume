@@ -189,104 +189,106 @@ export default function SmartSystemsPage() {
                       {/* Background Images */}
                       {card.id === 1 && (
                         <Image
-                          src="/assets/images/individuals/1_Educators_and_Mentors.jpg"
+                          src="/assets/images/individuals/1_Educators_and_Mentors.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 2 && (
                         <Image
-                          src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.jpg"
+                          src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 3 && (
                         <Image
-                          src="/assets/images/individuals/3_Independent_Creators.jpg"
+                          src="/assets/images/individuals/3_Independent_Creators.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 4 && (
                         <Image
-                          src="/assets/images/individuals/4_Technical_Professionals.jpg"
+                          src="/assets/images/individuals/4_Technical_Professionals.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 5 && (
                         <Image
-                          src="/assets/images/individuals/5_Consultants_and_Freelancers.jpg"
+                          src="/assets/images/individuals/5_Consultants_and_Freelancers.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 6 && (
                         <Image
-                          src="/assets/images/individuals/6_Students_and_Learners.jpg"
+                          src="/assets/images/individuals/6_Students_and_Learners.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 7 && (
                         <Image
-                          src="/assets/images/individuals/7_Skilled_Professionals.jpg"
+                          src="/assets/images/individuals/7_Skilled_Professionals.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 8 && (
                         <Image
-                          src="/assets/images/individuals/8_Writers_and_Thinkers.jpg"
+                          src="/assets/images/individuals/8_Writers_and_Thinkers.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 9 && (
                         <Image
-                          src="/assets/images/individuals/9_Performers_and_Public_Figures.jpg"
+                          src="/assets/images/individuals/9_Performers_and_Public_Figures.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
                       {card.id === 10 && (
                         <Image
-                          src="/assets/images/individuals/10_Everyday_Professionals.jpg"
+                          src="/assets/images/individuals/10_Everyday_Professionals.png"
                           alt={card.title}
                           fill
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           sizes="(max-width: 640px) 100vw, 50vw"
                         />
                       )}
-                      {/* Dark overlay for better text readability */}
-                      {card.id <= 10 && <div className="absolute inset-0 bg-black/40" />}
                       {/* Content */}
-                      <div className={`flex h-full flex-col justify-between p-6 text-left ${card.id <= 10 ? 'relative z-10' : ''}`}>
-                        <h3 className={`text-lg font-medium ${card.id <= 10 ? 'text-white' : 'text-foreground'}`}>
-                          {card.title}
-                        </h3>
-                        <p className={`text-sm ${card.id <= 10 ? 'text-white/90' : 'text-muted-foreground'}`}>
-                          {card.description}
-                        </p>
+                      <div className="flex h-full flex-col justify-between p-6 text-left relative z-10">
+                        <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
+                          <h3 className="text-lg font-medium underline text-black dark:text-white">
+                            {card.title}
+                          </h3>
+                        </div>
+                        <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
+                          <p className="text-sm text-black dark:text-white">
+                            {card.description}
+                          </p>
+                        </div>
                       </div>
                     </button>
                   ))}
@@ -307,7 +309,7 @@ export default function SmartSystemsPage() {
                     {/* Background Images for Selected Card */}
                     {selectedCard.id === 1 && (
                       <Image
-                        src="/assets/images/individuals/1_Educators_and_Mentors.jpg"
+                        src="/assets/images/individuals/1_Educators_and_Mentors.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -317,7 +319,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 2 && (
                       <Image
-                        src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.jpg"
+                        src="/assets/images/individuals/2_Medical_and_Wellness_Professionals.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -327,7 +329,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 3 && (
                       <Image
-                        src="/assets/images/individuals/3_Independent_Creators.jpg"
+                        src="/assets/images/individuals/3_Independent_Creators.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -337,7 +339,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 4 && (
                       <Image
-                        src="/assets/images/individuals/4_Technical_Professionals.jpg"
+                        src="/assets/images/individuals/4_Technical_Professionals.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -347,7 +349,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 5 && (
                       <Image
-                        src="/assets/images/individuals/5_Consultants_and_Freelancers.jpg"
+                        src="/assets/images/individuals/5_Consultants_and_Freelancers.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -357,7 +359,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 6 && (
                       <Image
-                        src="/assets/images/individuals/6_Students_and_Learners.jpg"
+                        src="/assets/images/individuals/6_Students_and_Learners.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -367,7 +369,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 7 && (
                       <Image
-                        src="/assets/images/individuals/7_Skilled_Professionals.jpg"
+                        src="/assets/images/individuals/7_Skilled_Professionals.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -377,7 +379,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 8 && (
                       <Image
-                        src="/assets/images/individuals/8_Writers_and_Thinkers.jpg"
+                        src="/assets/images/individuals/8_Writers_and_Thinkers.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -387,7 +389,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 9 && (
                       <Image
-                        src="/assets/images/individuals/9_Performers_and_Public_Figures.jpg"
+                        src="/assets/images/individuals/9_Performers_and_Public_Figures.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -397,7 +399,7 @@ export default function SmartSystemsPage() {
                     )}
                     {selectedCard.id === 10 && (
                       <Image
-                        src="/assets/images/individuals/10_Everyday_Professionals.jpg"
+                        src="/assets/images/individuals/10_Everyday_Professionals.png"
                         alt={selectedCard.title}
                         fill
                         className="object-cover"
@@ -405,16 +407,18 @@ export default function SmartSystemsPage() {
                         priority
                       />
                     )}
-                    {/* Dark overlay for better text readability */}
-                    {selectedCard.id <= 10 && <div className="absolute inset-0 bg-black/40" />}
                     {/* Content */}
-                    <div className={`flex h-full flex-col justify-between p-6 ${selectedCard.id <= 10 ? 'relative z-10' : ''}`}>
-                      <h3 className={`text-lg font-medium ${selectedCard.id <= 10 ? 'text-white' : 'text-foreground'}`}>
-                        {selectedCard.title}
-                      </h3>
-                      <p className={`text-sm ${selectedCard.id <= 10 ? 'text-white/90' : 'text-muted-foreground'}`}>
-                        {selectedCard.description}
-                      </p>
+                    <div className="flex h-full flex-col justify-between p-6 relative z-10">
+                      <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
+                        <h3 className="text-lg font-medium underline text-black dark:text-white">
+                          {selectedCard.title}
+                        </h3>
+                      </div>
+                      <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
+                        <p className="text-sm text-black dark:text-white">
+                          {selectedCard.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <p className="mt-6 text-sm text-muted-foreground md:text-base">
