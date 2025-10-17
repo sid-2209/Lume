@@ -8,6 +8,19 @@ import { useAudience } from "@/contexts/audience-context";
 
 interface ToolkitItem {
   title: string;
+  description: string;
+  setupTime: string;
+}
+
+interface AddOnItem {
+  title: string;
+  description: string;
+  setupTime: string;
+  toolkitName: string;
+}
+
+interface ToolkitAddOns {
+  [toolkitTitle: string]: AddOnItem[];
 }
 
 interface ProfessionToolkit {
@@ -23,6 +36,95 @@ interface CardData {
   toolkits: ProfessionToolkit;
 }
 
+const toolkitAddOnsData: ToolkitAddOns = {
+  "AI Lesson Builder": [
+    {
+      title: "Regional language lesson packs",
+      description: "Lesson content and worksheets translated/localized (Hindi/Tamil/Marathi etc.)",
+      setupTime: "+1–2 days",
+      toolkitName: "AI Lesson Builder"
+    },
+    {
+      title: "Auto worksheet generator (print + digital)",
+      description: "Creates graded worksheets and answer keys",
+      setupTime: "+1 day",
+      toolkitName: "AI Lesson Builder"
+    },
+    {
+      title: "Interactive quiz pack",
+      description: "Timed quizzes with auto-marks for online classes",
+      setupTime: "+2 days",
+      toolkitName: "AI Lesson Builder"
+    },
+    {
+      title: "Syllabus importer",
+      description: "Map school syllabus (CBSE/State boards) to lesson plan calendar",
+      setupTime: "+2–3 days",
+      toolkitName: "AI Lesson Builder"
+    }
+  ],
+  "Smart Schedule & Booking": [
+    {
+      title: "WhatsApp booking & reminders",
+      description: "Students/parents book and get reminders on WhatsApp",
+      setupTime: "+1–2 days",
+      toolkitName: "Smart Schedule & Booking"
+    },
+    {
+      title: "Group class manager",
+      description: "Create repeating group slots, waitlists and auto-enroll",
+      setupTime: "+1–2 days",
+      toolkitName: "Smart Schedule & Booking"
+    },
+    {
+      title: "Payment integration (UPI / Razorpay)",
+      description: "Instant collection on booking and receipts",
+      setupTime: "+1–3 days",
+      toolkitName: "Smart Schedule & Booking"
+    }
+  ],
+  "Student Progress & Grading Dashboard": [
+    {
+      title: "Auto grade extraction (OCR)",
+      description: "Scan handwritten work and capture scores (semi-automated)",
+      setupTime: "+3–5 days",
+      toolkitName: "Student Progress & Grading Dashboard"
+    },
+    {
+      title: "Parent/student reports",
+      description: "Weekly/monthly automated report cards sent via email/WhatsApp",
+      setupTime: "+2 days",
+      toolkitName: "Student Progress & Grading Dashboard"
+    },
+    {
+      title: "Churn/at-risk alerts",
+      description: "Flags students needing intervention with suggested actions",
+      setupTime: "+2–3 days",
+      toolkitName: "Student Progress & Grading Dashboard"
+    }
+  ],
+  "Content & Class Marketing Pack": [
+    {
+      title: "Localized ad copy + creatives",
+      description: "Regionally tailored captions and image templates",
+      setupTime: "+1–2 days",
+      toolkitName: "Content & Class Marketing Pack"
+    },
+    {
+      title: "Automated follow-up funnel",
+      description: "Nurtures leads and books trial classes automatically",
+      setupTime: "+2–3 days",
+      toolkitName: "Content & Class Marketing Pack"
+    },
+    {
+      title: "Short-video clip edits",
+      description: "Turn sample class recordings into 30–60s promo reels",
+      setupTime: "+2–3 days",
+      toolkitName: "Content & Class Marketing Pack"
+    }
+  ]
+};
+
 const cardsData: CardData[] = [
   {
     id: 1,
@@ -32,22 +134,70 @@ const cardsData: CardData[] = [
     professions: ["Teachers & Tutors", "Trainers & Coaches", "Academic Counselor"],
     toolkits: {
       "Teachers & Tutors": [
-        { title: "AI Lesson Builder" },
-        { title: "Smart Schedule & Booking" },
-        { title: "Student Progress & Grading Dashboard" },
-        { title: "Content & Class Marketing Pack" },
+        {
+          title: "AI Lesson Builder",
+          description: "Drafts lesson plans, slide outlines and customizable worksheets from a topic and class level.",
+          setupTime: "2–5 days"
+        },
+        {
+          title: "Smart Schedule & Booking",
+          description: "Booking page + calendar sync + automated reminders so no-shows fall and planning becomes painless.",
+          setupTime: "1–3 days"
+        },
+        {
+          title: "Student Progress & Grading Dashboard",
+          description: "Consolidates attendance, grades, assignment history and shows simple insights (who's falling behind).",
+          setupTime: "3–7 days"
+        },
+        {
+          title: "Content & Class Marketing Pack",
+          description: "Generates social posts, banners, WhatsApp broadcast templates and landing pages to fill classes.",
+          setupTime: "2–4 days"
+        },
       ],
       "Trainers & Coaches": [
-        { title: "Client Program Builder" },
-        { title: "1:1 Session Manager" },
-        { title: "Group Program & Community Hub" },
-        { title: "Lead Capture & Conversion Flow" },
+        {
+          title: "Client Program Builder",
+          description: "Auto-generate training programs (weekly plans, milestones) tailored to client goals.",
+          setupTime: "2–4 days"
+        },
+        {
+          title: "1:1 Session Manager",
+          description: "Scheduling, notes, session summaries, and follow-up action items generated automatically after each meeting.",
+          setupTime: "2–3 days"
+        },
+        {
+          title: "Group Program & Community Hub",
+          description: "Run cohorts with onboarding flows, community chat and progress cohorts dashboards.",
+          setupTime: "4–7 days"
+        },
+        {
+          title: "Lead Capture & Conversion Flow",
+          description: "Landing page + qualification bot + booking funnel to convert prospects into trial clients.",
+          setupTime: "2–5 days"
+        },
       ],
       "Academic Counselor": [
-        { title: "Student Profile & Matching Engine" },
-        { title: "Application & Document Assistant" },
-        { title: "Counselling Session Toolkit" },
-        { title: "Market & Outcome Insights" },
+        {
+          title: "Student Profile & Matching Engine",
+          description: "Intake form + AI assistant that matches students to courses, programs or exam pathways based on profile and goals.",
+          setupTime: "3–6 days"
+        },
+        {
+          title: "Application & Document Assistant",
+          description: "Templates, auto-fill helpers and document checklists for applications (college, scholarships, exchange programs).",
+          setupTime: "2–4 days"
+        },
+        {
+          title: "Counselling Session Toolkit",
+          description: "Bookings, session notes, pre-session questionnaires and automated post-session action plans.",
+          setupTime: "2–3 days"
+        },
+        {
+          title: "Market & Outcome Insights",
+          description: "Reports on admission trends, cutoffs, job-market fit for courses, and outcome probability estimates.",
+          setupTime: "4–8 days"
+        },
       ],
     },
   },
@@ -131,6 +281,8 @@ export default function SmartSystemsPage() {
   const [selectedProfession, setSelectedProfession] = useState<string | null>(null);
   const [selectedToolkits, setSelectedToolkits] = useState<string[]>([]);
   const [toolkitConfirmed, setToolkitConfirmed] = useState(false);
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+  const [addOnsConfirmed, setAddOnsConfirmed] = useState(false);
 
   const handleCardClick = (card: CardData) => {
     setSelectedCard(card);
@@ -138,21 +290,72 @@ export default function SmartSystemsPage() {
   };
 
   const handleProfessionClick = (profession: string) => {
-    setSelectedProfession(profession);
-    setSelectedToolkits([]); // Reset toolkit selection when profession changes
-    setToolkitConfirmed(false); // Reset confirmation state
+    // Toggle selection: if clicking the same profession, deselect it
+    if (selectedProfession === profession) {
+      setSelectedProfession(null);
+      setSelectedToolkits([]); // Reset toolkit selection
+      setToolkitConfirmed(false); // Reset confirmation state
+      setSelectedAddOns([]); // Reset add-ons selection
+      setAddOnsConfirmed(false); // Reset add-ons confirmation
+    } else {
+      setSelectedProfession(profession);
+      setSelectedToolkits([]); // Reset toolkit selection when profession changes
+      setToolkitConfirmed(false); // Reset confirmation state
+      setSelectedAddOns([]); // Reset add-ons selection
+      setAddOnsConfirmed(false); // Reset add-ons confirmation
+    }
   };
 
   const handleToolkitToggle = (toolkitTitle: string) => {
-    setSelectedToolkits((prev) =>
-      prev.includes(toolkitTitle)
+    setSelectedToolkits((prev) => {
+      const newToolkits = prev.includes(toolkitTitle)
         ? prev.filter((title) => title !== toolkitTitle)
-        : [...prev, toolkitTitle]
-    );
+        : [...prev, toolkitTitle];
+
+      // Clean up orphaned add-ons when toolkit is deselected
+      if (!newToolkits.includes(toolkitTitle)) {
+        setSelectedAddOns((prevAddOns) =>
+          prevAddOns.filter((addOnTitle) => {
+            // Find the add-on in the data
+            const addOnsForToolkit = toolkitAddOnsData[toolkitTitle] || [];
+            const isFromDeselectedToolkit = addOnsForToolkit.some(
+              (addOn) => addOn.title === addOnTitle
+            );
+            // Keep only add-ons that are NOT from the deselected toolkit
+            return !isFromDeselectedToolkit;
+          })
+        );
+      }
+
+      return newToolkits;
+    });
   };
 
   const handleContinue = () => {
     setToolkitConfirmed(true);
+  };
+
+  const handleAddOnToggle = (addOnTitle: string) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(addOnTitle)
+        ? prev.filter((title) => title !== addOnTitle)
+        : [...prev, addOnTitle]
+    );
+  };
+
+  const handleAddOnsContinue = () => {
+    setAddOnsConfirmed(true);
+  };
+
+  // Get available add-ons based on selected toolkits
+  const getAvailableAddOns = (): AddOnItem[] => {
+    const addOns: AddOnItem[] = [];
+    selectedToolkits.forEach((toolkit) => {
+      if (toolkitAddOnsData[toolkit]) {
+        addOns.push(...toolkitAddOnsData[toolkit]);
+      }
+    });
+    return addOns;
   };
 
   return (
@@ -300,7 +503,7 @@ export default function SmartSystemsPage() {
                 {/* Left Panel - Selected Card (maintains grid width) */}
                 <div className="w-full max-w-2xl flex-shrink-0 lg:sticky lg:top-32">
                   <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
-                    You're in your element.
+                    You&apos;re in your element.
                   </h2>
                   <div
                     className="relative overflow-hidden rounded-lg border border-border bg-background sm:w-[calc((100%-1.5rem)/2)] animate-in slide-in-from-bottom-4 duration-300"
@@ -443,7 +646,7 @@ export default function SmartSystemsPage() {
                         Schedule a Consultation
                       </h3>
                       <p className="mt-2 text-base text-muted-foreground md:text-lg">
-                        Don't see what you're looking for? Let's talk through your ideas and design something that fits perfectly.
+                        Don&apos;t see what you&apos;re looking for? Let&apos;s talk through your ideas and design something that fits perfectly.
                       </p>
                     </button>
                   </div>
@@ -451,72 +654,71 @@ export default function SmartSystemsPage() {
 
                 {/* Right Panel - Profession Options with Border */}
                 <div className="flex-1 border-t pt-8 lg:border-l lg:border-t-0 lg:pl-16 lg:pt-0">
-                  {!selectedProfession ? (
-                    <>
-                      <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
-                        Choose what best describes your craft
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 animate-in slide-in-from-right-4 duration-300">
-                        {selectedCard.professions.map((profession, index) => (
-                          <button
-                            key={index}
-                            onClick={() => handleProfessionClick(profession)}
-                            className="rounded-lg border border-border bg-background px-6 py-4 text-left transition-colors hover:border-foreground/20 hover:bg-muted/50 hover:cursor-pointer"
-                          >
-                            <span className="text-lg font-medium text-foreground">
-                              {profession}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
-                        This is your craft.
-                      </h2>
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 animate-in slide-in-from-right-4 duration-300">
-                        <div className="rounded-lg border border-border bg-background px-6 py-4">
+                  <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
+                    {selectedProfession ? "This is your craft." : "Choose what best describes your craft"}
+                  </h2>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 animate-in slide-in-from-right-4 duration-300">
+                    {selectedCard.professions.map((profession, index) => {
+                      const isSelected = selectedProfession === profession;
+                      return (
+                        <button
+                          key={index}
+                          onClick={() => handleProfessionClick(profession)}
+                          className={`rounded-lg border-2 bg-background px-6 py-4 text-left transition-colors hover:bg-muted/50 hover:cursor-pointer ${
+                            isSelected ? "border-[#007FFF]" : "border-dashed border-muted-foreground/30"
+                          }`}
+                        >
                           <span className="text-lg font-medium text-foreground">
-                            {selectedProfession}
+                            {profession}
                           </span>
-                        </div>
-                      </div>
-                      <div className="animate-in slide-in-from-right-4 duration-300">
-                        <h3 className="mt-8 mb-6 text-xl font-medium text-foreground md:text-2xl">
-                          {toolkitConfirmed ? "This is your Toolkit." : "Toolkit. Which is best for you?"}{" "}
-                          {!toolkitConfirmed && (
-                            <span className="text-base italic font-normal text-muted-foreground">
-                              Choose all that apply.
-                            </span>
-                          )}
-                        </h3>
-                        {selectedCard.toolkits[selectedProfession] && (
-                          <>
-                            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 p-1">
-                              {selectedCard.toolkits[selectedProfession]
-                                .filter((toolkit) => !toolkitConfirmed || selectedToolkits.includes(toolkit.title))
-                                .map((toolkit, index) => {
-                                  const isSelected = selectedToolkits.includes(toolkit.title);
-                                  return (
-                                    <button
-                                      key={index}
-                                      onClick={() => !toolkitConfirmed && handleToolkitToggle(toolkit.title)}
-                                      disabled={toolkitConfirmed}
-                                      className={`overflow-hidden rounded-lg border border-border bg-background transition-all hover:border-foreground/20 ${
-                                        isSelected ? "ring-2 ring-primary/50" : ""
-                                      } ${!toolkitConfirmed ? "cursor-pointer" : "cursor-default"}`}
-                                      style={{ aspectRatio: "4/5" }}
-                                    >
-                                      <div className="flex h-full flex-col justify-between p-6 text-left">
-                                        <h4 className="text-lg font-medium text-foreground">
-                                          {toolkit.title}
-                                        </h4>
-                                      </div>
-                                    </button>
-                                  );
-                                })}
-                            </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {selectedProfession && (
+                    <div className="animate-in slide-in-from-right-4 duration-300">
+                      <h3 className="mt-8 mb-6 text-xl font-medium text-foreground md:text-2xl">
+                        {selectedToolkits.length > 0 ? "This is your Toolkit." : "Toolkit. Which is best for you?"}{" "}
+                        {selectedToolkits.length === 0 && (
+                          <span className="text-base italic font-normal text-muted-foreground">
+                            Choose all that apply.
+                          </span>
+                        )}
+                      </h3>
+                      {selectedCard.toolkits[selectedProfession] && (
+                        <>
+                          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 p-1">
+                            {selectedCard.toolkits[selectedProfession].map((toolkit, index) => {
+                              const isSelected = selectedToolkits.includes(toolkit.title);
+                              return (
+                                <button
+                                  key={index}
+                                  onClick={() => handleToolkitToggle(toolkit.title)}
+                                  className={`overflow-hidden rounded-lg border-2 bg-background transition-all hover:bg-muted/50 cursor-pointer ${
+                                    isSelected
+                                      ? "border-[#007FFF]"
+                                      : "border-dashed border-muted-foreground/30"
+                                  }`}
+                                  style={{ aspectRatio: "4/5" }}
+                                >
+                                  <div className="flex h-full flex-col justify-between p-6 text-left">
+                                    <h4 className="text-lg font-medium text-foreground">
+                                      {toolkit.title}
+                                    </h4>
+                                    <div className="space-y-2 text-sm text-muted-foreground">
+                                      <p>
+                                        <span className="font-bold text-foreground">What:</span> {toolkit.description}
+                                      </p>
+                                      <p>
+                                        <span className="font-bold text-foreground">Setup time:</span> {toolkit.setupTime}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </button>
+                              );
+                            })}
+                          </div>
                             {/* Continue Button */}
                             {selectedToolkits.length > 0 && !toolkitConfirmed && (
                               <button
@@ -527,11 +729,68 @@ export default function SmartSystemsPage() {
                               </button>
                             )}
 
+                            {/* Add-ons Section */}
+                            {toolkitConfirmed && selectedToolkits.length > 0 && getAvailableAddOns().length > 0 && (
+                              <div className="mt-12 animate-in slide-in-from-right-4 duration-300">
+                                <h3 className="mb-3 text-xl font-medium text-foreground md:text-2xl">
+                                  Customize Your Selection
+                                </h3>
+                                <p className="mb-6 text-base text-muted-foreground md:text-lg">
+                                  Add tools or features that align with your goals and make your experience truly yours.
+                                </p>
+                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 p-1">
+                                  {getAvailableAddOns().map((addOn, index) => {
+                                    const isSelected = selectedAddOns.includes(addOn.title);
+                                    return (
+                                      <button
+                                        key={index}
+                                        onClick={() => handleAddOnToggle(addOn.title)}
+                                        className={`overflow-hidden rounded-lg border-2 bg-background transition-all hover:bg-muted/50 cursor-pointer ${
+                                          isSelected
+                                            ? "border-[#007FFF]"
+                                            : "border-dashed border-muted-foreground/30"
+                                        }`}
+                                        style={{ aspectRatio: "4/5" }}
+                                      >
+                                        <div className="flex h-full flex-col justify-between p-6 text-left">
+                                          <div>
+                                            <h4 className="text-lg font-medium text-foreground">
+                                              {addOn.title}
+                                            </h4>
+                                            <p className="text-xs italic text-muted-foreground mt-1">
+                                              for {addOn.toolkitName}
+                                            </p>
+                                          </div>
+                                          <div className="space-y-2 text-sm text-muted-foreground">
+                                            <p>
+                                              <span className="font-bold text-foreground">What:</span> {addOn.description}
+                                            </p>
+                                            <p>
+                                              <span className="font-bold text-foreground">Setup time:</span> {addOn.setupTime}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                                {/* Continue Button for Add-ons */}
+                                {!addOnsConfirmed && (
+                                  <button
+                                    onClick={handleAddOnsContinue}
+                                    className="mt-8 rounded-lg bg-foreground px-6 py-3 text-base font-medium text-background transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2"
+                                  >
+                                    Continue
+                                  </button>
+                                )}
+                              </div>
+                            )}
+
                             {/* Estimate Breakdown Section */}
-                            {toolkitConfirmed && (
+                            {toolkitConfirmed && (addOnsConfirmed || getAvailableAddOns().length === 0) && (
                               <div className="mt-12">
                                 <h3 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
-                                  Here's a Clear Breakdown of Your Estimate
+                                  Here&apos;s a Clear Breakdown of Your Estimate
                                 </h3>
                                 <div className="rounded-lg border border-border bg-background p-8">
                                   <div className="space-y-6">
@@ -540,19 +799,34 @@ export default function SmartSystemsPage() {
                                         Selected Toolkits: {selectedToolkits.length}
                                       </span>
                                     </div>
+                                    {selectedAddOns.length > 0 && (
+                                      <div className="flex items-center justify-between">
+                                        <span className="text-base text-foreground">
+                                          Selected Add-ons: {selectedAddOns.length}
+                                        </span>
+                                      </div>
+                                    )}
                                     <div className="border-t border-border pt-4">
                                       <p className="text-sm text-muted-foreground">
-                                        Detailed estimate information will be displayed here based on your selected toolkits.
+                                        Detailed estimate information will be displayed here based on your selected toolkits{selectedAddOns.length > 0 ? " and add-ons" : ""}.
                                       </p>
                                     </div>
                                   </div>
+                                </div>
+                                {/* Action Buttons */}
+                                <div className="mt-6 flex gap-4">
+                                  <button className="rounded-lg border border-border bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2">
+                                    Save Draft
+                                  </button>
+                                  <button className="rounded-lg bg-foreground px-6 py-3 text-base font-medium text-background transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2">
+                                    Continue
+                                  </button>
                                 </div>
                               </div>
                             )}
                           </>
                         )}
                       </div>
-                    </>
                   )}
                 </div>
               </div>
