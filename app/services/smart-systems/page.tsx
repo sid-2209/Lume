@@ -387,12 +387,12 @@ export default function SmartSystemsPage() {
                 <h2 className="mb-6 text-xl font-medium text-foreground md:text-2xl">
                   Choose a category to get started.
                 </h2>
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
                   {cardsData.map((card) => (
                     <button
                       key={card.id}
                       onClick={() => handleCardClick(card)}
-                      className="group relative overflow-hidden rounded-lg border border-border bg-background transition-colors hover:border-foreground/20 hover:cursor-pointer"
+                      className="group relative overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-all duration-300 hover:border-foreground/40 hover:shadow-lg hover:scale-[1.02] hover:cursor-pointer"
                       style={{ aspectRatio: '4/5' }}
                     >
                       {/* Background Images */}
@@ -487,14 +487,12 @@ export default function SmartSystemsPage() {
                         />
                       )}
                       {/* Content */}
-                      <div className="flex h-full flex-col justify-between p-6 text-left relative z-10">
-                        <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
-                          <h3 className="text-lg font-medium underline text-black dark:text-white">
+                      <div className="flex h-full flex-col justify-end p-6 text-left relative z-10">
+                        <div className="backdrop-blur-[16px] bg-white/80 dark:bg-black/75 rounded-lg border border-white/20 px-4 py-3 space-y-1">
+                          <h3 className="text-lg font-semibold text-black dark:text-white">
                             {card.title}
                           </h3>
-                        </div>
-                        <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
-                          <p className="text-sm text-black dark:text-white">
+                          <p className="text-sm text-black/80 dark:text-white/80">
                             {card.description}
                           </p>
                         </div>
@@ -617,14 +615,12 @@ export default function SmartSystemsPage() {
                       />
                     )}
                     {/* Content */}
-                    <div className="flex h-full flex-col justify-between p-6 relative z-10">
-                      <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
-                        <h3 className="text-lg font-medium underline text-black dark:text-white">
+                    <div className="flex h-full flex-col justify-end p-6 relative z-10">
+                      <div className="backdrop-blur-[16px] bg-white/80 dark:bg-black/75 rounded-lg border border-white/20 px-4 py-3 space-y-1">
+                        <h3 className="text-lg font-semibold text-black dark:text-white">
                           {selectedCard.title}
                         </h3>
-                      </div>
-                      <div className="backdrop-blur-[10px] bg-white/70 dark:bg-black/60 rounded-md px-3 py-2 w-fit">
-                        <p className="text-sm text-black dark:text-white">
+                        <p className="text-sm text-black/80 dark:text-white/80">
                           {selectedCard.description}
                         </p>
                       </div>
